@@ -1,0 +1,23 @@
+{
+  "name": "appium-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "e2e": "mocha --reporter spec",
+    "test": "mocha --reporter spec test/apex_family_office.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "appium-uiautomator2-driver": "^3.0.0",
+    "webdriverio": "^8.32.2"
+  },
+  "dependencies": {
+    "appium": "^2.5.1",
+    "chai": "^5.1.0",
+    "mocha": "^10.3.0",
+    "mocha-logger": "^1.0.8"
+  }
+}
