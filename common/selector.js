@@ -3,19 +3,25 @@ export class Selector{
         this.comp = comp;
         this.attr = attr;
         this.text = text;
-        this.selector = `//android.widget.${comp}[@${attr}="${text}"]`;
+        this.setSelector();
+
         if(attr === attribute.resourceId) this.setContains(true);
-        if(comp === component.view) this.selector = `//android.view.${comp}[@${attr}="${text}"]`;
+        
     }
     getSelector(){
-        return this.selector;
+        return this.makeSelector();
     }
-    setSelector(selector){
-        this.selector = selector;
+    setSelector(){
+        this.os = `//android.`;
+        this.widget = this.comp === component.view ? 'view.' : 'widget.';
+        this.tag = `[@${this.attr} = "${this.text}"]`;
+    }
+    makeSelector(){
+        return this.os + this.widget + this.comp + this.tag;
     }
     setContains(bool){
         if(bool) {
-            this.selector = `//android.widget.${this.comp}[contains(@${this.attr}, "${this.text}")]`;
+            this.tag = `[contains(@${this.attr}, "${this.text}")]`;
         }
     }
 }
@@ -24,7 +30,8 @@ export const component = {
     button : 'Button',
     editText : 'EditText',
     imageView : 'ImageView',
-    view : 'View'
+    view : 'View',
+    textView : 'TextView'
 }
 export const attribute = {
     resourceId : 'resource-id',

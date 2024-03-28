@@ -36,7 +36,8 @@ export default class Page{
         return new Promise((resolve)=>setTimeout(resolve, time));
     }
     async setElementText(element, text){
-        mochaLogger.log('Set Element Value ', text);
+        
         await element.setValue(text);
+        mochaLogger.success('Set Element Value ', text);
     }
 }
